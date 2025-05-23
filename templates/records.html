@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Temp</th>
+        <th>Condition</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for r in data %}
+    <tr>
+        <td>{{ r.location }}</td>
+        <td>{{ r.date }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('update', id=r.id) }}">
+                <input name="temperature" value="{{ r.temperature }}" type="text" />
+                <button>Update</button>
+            </form>
+        </td>
+        <td>{{ r.condition }}</td>
+        <td><a href="{{ url_for('delete', id=r.id) }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('export_json') }}">Export as JSON</a>

@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+requests
+python-dotenv
+Flask-WTF
+WTForms
+pandas
+fpdf
+
