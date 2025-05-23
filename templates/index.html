@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <h1>🌦 Weather App</h1>
+    <h1> Weather App by Anurag Lawaniya</h1>
     <form method="POST">
         <input type="text" name="location" placeholder="Enter location" required>
         <input type="date" name="date" required>
@@ -45,6 +45,59 @@
     {% if error %}
     <p class="error">{{ error }}</p>
     {% endif %}
+
+    <!-- Info Button -->
+    <button id="infoBtn" style="padding:8px 15px; cursor:pointer;">Info about PM Accelerator</button>
+
+    <!-- Info Popup (initially hidden) -->
+    <div id="infoPopup" style="
+    display:none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #333;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 300px;
+    z-index: 1000;">
+        <h3>PM Accelerator</h3>
+        <p>
+            PM Accelerator is a platform/tool designed to speed up project management processes by providing automation, analytics, and collaboration features that help teams deliver projects faster and more efficiently.
+        </p>
+        <button id="closeInfo" style="margin-top:10px; padding:5px 10px; cursor:pointer;">Close</button>
+    </div>
+
+    <!-- Optional background overlay -->
+    <div id="overlay" style="
+    display:none;
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 900;
+"></div>
+
+    <script>
+        // Show popup on Info button click
+        document.getElementById('infoBtn').onclick = function() {
+            document.getElementById('infoPopup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Hide popup on Close button click
+        document.getElementById('closeInfo').onclick = function() {
+            document.getElementById('infoPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Also hide popup if overlay is clicked
+        document.getElementById('overlay').onclick = function() {
+            this.style.display = 'none';
+            document.getElementById('infoPopup').style.display = 'none';
+        }
+    </script>
+
 </body>
 
 </html>
